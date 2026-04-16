@@ -18,3 +18,11 @@ const riesgobajo=1.044;
 const riesgomedio=2.436;
 const riesgoalto=4.350;
 const riesgomaximo=6.960;
+const porcentajeIBC = 0.7;
+const porcentajesalud = 0.04;
+const porcentajepension = 0.04;
+
+let salariototal= salario + comisiones + horasextras;
+let IBC= salariototal * porcentajeIBC;
+let salud = IBC * porcentajesalud;
+let pension = IBC * porcentajepension;
