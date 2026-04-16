@@ -13,6 +13,10 @@ const salariominimointegralvigente=22761765;
 const subsidiodetransporte=249095;
 const unidaddevalortributario=5237;
 
+function calcularPorcentaje (base,porcentaje){
+    return base * porcentaje;
+}
+
 const riesgominimo=0.522;
 const riesgobajo=1.044;
 const riesgomedio=2.436;
@@ -26,3 +30,4 @@ let salariototal= salario + comisiones + horasextras;
 let IBC= salariototal * porcentajeIBC;
 let salud = IBC * porcentajesalud;
 let pension = IBC * porcentajepension;
+
