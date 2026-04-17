@@ -3,6 +3,19 @@ let edad=0;
 let tipodedocumento="";
 let numerodedocumento="";
 
+if (edad < 18) {
+    console.log("No puede entrar");
+} 
+else if (edad>=18 && edad <=25){
+    console.log("Usuario beneficiario por cotizante, no puede entrar");
+}
+else if (edad >=60){
+    console.log("Se calculara la pension");
+}
+else {
+    console.log("Puede entrar");
+}
+
 let salario=0;
 let comisiones="";
 let totaldehorasextra="";
@@ -25,9 +38,11 @@ const riesgomaximo=6.960;
 const porcentajeIBC = 0.7;
 const porcentajesalud = 0.04;
 const porcentajepension = 0.04;
+const porcentajefondosolidaridad= 0.01;
 
 let salariototal= salario + comisiones + horasextras;
-let IBC= salariototal * porcentajeIBC;
-let salud = IBC * porcentajesalud;
-let pension = IBC * porcentajepension;
-
+let IBC= calcularPorcentaje (salariototal, porcentajeIBC);
+let salud = calcularPorcentaje(IBC,porcentajesalud);
+let pension = calcularPorcentaje(IBC,porcentajepension);
+let fondosolidaridad= calcularPorcentaje(IBC,porcentajefondosolidaridad);
+IBC>=4*salariominimolegalvigente ? fondosolidaridad: fondosolidaridad=0;
