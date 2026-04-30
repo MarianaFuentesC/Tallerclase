@@ -16,10 +16,14 @@ else {
     console.log("Puede entrar");
 }
 
-let salario=0;
-let comisiones="";
-let totaldehorasextra="";
-let clasificaciondenivelderiesgo="";
+let salario= prompt();
+console.log()
+let comisiones= prompt();
+console.log()
+let totaldehorasextra= prompt();
+console.log()
+let clasificaciondenivelderiesgo= prompt();
+console.log()
 
 const salariominimolegalvigente=1750905;
 const salariominimointegralvigente=22761765;
