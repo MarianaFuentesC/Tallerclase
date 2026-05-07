@@ -1,7 +1,11 @@
-let nombrecompleto="";
-let edad=0;
-let tipodedocumento="";
-let numerodedocumento="";
+let nombrecompleto= prompt(poner el nombre completo);
+console.log (nombrecompleto);
+let edad= prompt(poner la edad);
+console.log (edad);
+let tipodedocumento=prompt(poner el tipo de documeto);
+console.log (tipodedocumento);
+let numerodedocumento=prompt(poner el numero de documeto);
+console.log(numerodedocumento);
 
 if (edad < 18) {
     console.log("No puede entrar");
@@ -16,14 +20,14 @@ else {
     console.log("Puede entrar");
 }
 
-let salario= prompt();
-console.log()
-let comisiones= prompt();
-console.log()
-let totaldehorasextra= prompt();
-console.log()
-let clasificaciondenivelderiesgo= prompt();
-console.log()
+let salario= prompt(poner salario);
+console.log(salario);
+let comisiones= prompt(poner comisiones);
+console.log(comisiones);
+let totaldehorasextra= prompt(poner total de horasextras);
+console.log(horasextras);
+let nivelderiesgo= prompt(poner nivel de riesgo);
+console.log(nivelderiesgo);
 
 const salariominimolegalvigente=1750905;
 const salariominimointegralvigente=22761765;

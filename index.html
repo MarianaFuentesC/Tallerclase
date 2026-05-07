@@ -7,5 +7,30 @@
          </head> 
          <body>
              <script src="script.js"></script> 
+             <form id="registro-usuario">
+  
+  
+    <label for="nombrecompleto">Nombre completo</label>
+    <input type="text" id="nombrecompleto" name="nombre">
+  
+    <label for="edad">Edad</label>
+    <input type="number" id="edad" name="edad" min="0" max="120" >
+  
+    <label for="tipodedocumento">Tipo de Documento</label>
+    <select id="tipodedocumento" name="tipodedocumento">
+      <option value="" disabled selected>Seleccione una opción</option>
+      <option value="CC">Cédula de Ciudadanía</option>
+      <option value="TI">Tarjeta de Identidad</option>
+      <option value="CE">Cédula de Extranjería</option>
+    </select>
+
+ 
+    <label for="numerodedocumento">Número de Documento</label>
+    <input type="text" id="numerodedocumento" name="numerodedocumento" required>
+
+  <input type="button" id="button" name="button" value="Enviar">
+
+  
+</form>
             </body> 
             </html>   
