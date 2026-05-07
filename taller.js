@@ -8,7 +8,7 @@ let numerodedocumento=prompt(poner el numero de documeto);
 console.log(numerodedocumento);
 
 if (edad < 18) {
-    console.log("No puede entrar");
+    console.log("No puede ingresar");
 } 
 else if (edad>=18 && edad <=25){
     console.log("Usuario beneficiario por cotizante, no puede entrar");
