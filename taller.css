@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: linear-gradient(135deg, #f8b4c8, #f48b82);
+
+    overflow: hidden;
+    position: relative;
+}
+body::before{
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    top: 60px;
+    left: 80px;
+    backdrop-filter: blur(10px);
+    }
+
+body::after{
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    bottom: 90px;
+    right: 120px;
+    backdrop-filter: blur(10px);
+}
+#registro-usuario{
+    width: 350px;
+    padding: 40px 30px;
+
+    background: rgba(255,255,255,0.18);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    position: relative;
+    z-index: 10;
+}
+
+/* Título */
+#registro-usuario::before{
+    content: "Welcome";
+    font-size: 34px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+label{
+    color: white;
+    font-size: 14px;
+    margin-left: 5px;
+}
+input,
+select{
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.25);
+
+    color: white;
+    font-size: 14px;
+
+    outline: none;
+
+    box-shadow: inset 2px 2px 5px rgba(255,255,255,0.2),
+                inset -2px -2px 5px rgba(0,0,0,0.05);
+}
+input::placeholder{
+    color: rgba(255,255,255,0.8);
+}
+select option{
+    color: black;
+}
+#button{
+    margin-top: 15px;
+    background: rgba(255,255,255,0.4);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#button:hover{
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.55);
+}
