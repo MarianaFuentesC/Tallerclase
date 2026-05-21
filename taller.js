@@ -1,184 +1,112 @@
-let nombrecompleto= document.getElementById("nombrecompleto")
-let edad= document.getElementById("edad")
-let tipodedocumento= document.getElementById("tipodedocumento")
-let numerodedocumento= document.getElementById("numerodedocumento")
+let formulario = document.getElementById("registro-usuario")
 
-if (edad < 18) {
-    console.log("No puede ingresar");
-} 
-else if (edad>=18 && edad <=25){
-    console.log("Usuario beneficiario por cotizante, no puede entrar");
-}
-else if (edad >=60){
-    console.log("Se calculara la pension");
-}
-else {
-    console.log("Puede entrar");
-}
+let nombreCompleto = document.getElementById("nombreCompleto")
+let edad = document.getElementById("edad")
+let tipoDocumento = document.getElementById("tipodedocumento")
+let numeroDocumento = document.getElementById("numerodedocumento")
 
-let salario= document.getElementById("salario")
-let comisiones= document.getElementById("comisiones")
-let horasExtras= document.getElementById("horasExtras")
-let nivelderiesgo= document.getElementById("nivelderiesgo")
+let salario = document.getElementById("salario")
+let comisiones = document.getElementById("comisiones")
+let horasExtras = document.getElementById("horasExtras")
+let nivelRiesgo = document.getElementById("nivelRiesgo")
 
-let valorEdad = parseInt(edad.value)
-let valorSalario = parseFloat(salario.value)
-let valorComisiones = parseFloat(comisiones.value)
-let valorHorasExtras = parseFloat(horasextras.value)
+const salarioMinimoLegal = 1750905
 
-alert("Por favor llenar el formulario con su información")
+const porcentajeIBC = 0.7
+const porcentajeSalud = 0.04
+const porcentajePension = 0.04
+const porcentajeFondoSolidaridad = 0.01
 
-const salariominimolegalvigente=1750905;
-const salariominimointegralvigente=22761765;
-const subsidiodetransporte=249095;
-const unidaddevalortributario=5237;
-
-function calcularPorcentaje (base,porcentaje){
-    return base * porcentaje;
+function calcularPorcentaje(base, porcentaje) {
+    return base * porcentaje
 }
 
-const riesgominimo=0.522;
-const riesgobajo=1.044;
-const riesgomedio=2.436;
-const riesgoalto=4.350;
-const riesgomaximo=6.960;
-const porcentajeIBC = 0.7;
-const porcentajesalud = 0.04;
-const porcentajepension = 0.04;
-const porcentajefondosolidaridad= 0.01;
+alert("Por favor llena el formulario con tu información")
 
-let salarioTotal =(parseFloat(salario.value) || 0) + (parseFloat(comisiones.value) || 0) + (parseFloat(horasExtras.value) || 0)
-let IBC = calcularPorcentaje ( salarioTotal, porcentajeIBC );
-let fondoSolidaridad = calcularPorcentaje ( IBC, porcentfondosolidaridad );
-let salud = calcularPorcentaje ( IBC, porcentajesalud);
-let pension = calcularPorcentaje ( IBC, porcentajepension);
+formulario.addEventListener("submit", function (event) {
 
-fondoSolidaridad = IBC >= 4 * salariominimolegalV ? fondoSolidaridad: 0;
-
-let formulario = document.querySelector("form")
-
-formulario.addEventListener("submit", function(event){
+    event.preventDefault()
 
     let valorEdad = parseInt(edad.value)
-    let valorSalario = parseFloat(salario.value)
-    let valorComisiones = parseFloat(comisiones.value)
-    let valorHorasExtras = parseFloat(horasExtras.value)
+    let valorSalario = parseFloat(salario.value) || 0
+    let valorComisiones = parseFloat(comisiones.value) || 0
+    let valorHorasExtras = parseFloat(horasExtras.value) || 0
 
-    if(valorSalario <= 0){
+    let valorNombre = nombreCompleto.value.trim()
+    let valorDocumento = numeroDocumento.value.trim()
 
-        event.preventDefault()
 
-        alert("El salario debe ser mayor a 0")
-
-        return
-    }
-
-    if(valorComisiones > valorSalario){
-
-        event.preventDefault()
-
-        alert("Las comisiones no pueden ser mayores al salario")
-
-        return
-    }
-
-    if(valorHorasExtras > 2000000){
-
-        event.preventDefault()
-
-        alert("Horas extras demasiado altas")
-
-        return
-    }
-
-    if(nombreCompleto.value.trim().length < 3){
-
-        event.preventDefault()
-
-        alert("Nombre demasiado corto")
-
-        return
-    }
-
-    if(nombreCompleto.value.trim() === ""){
-
-        event.preventDefault()
-
-        alert("El nombre está vacío")
-
-        return
-    }
-
-    if(isNaN(valorEdad)){
-
-        event.preventDefault()
-
-        alert("Edad inválida")
-
-        return
-    }
-
-    if(numeroDocumento.value.length < 9){
-
-        event.preventDefault()
-
-        alert("Documento muy corto")
-
-        return
-    }
-
-    let regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
-
-    if(!regexNombre.test(nombreCompleto.value)){
-
-        event.preventDefault()
-
+    if (valorNombre.length < 3) {
         alert("Nombre inválido")
-
         return
     }
 
-    if(numeroDocumento.value < 0){
-
-        event.preventDefault()
-
-        alert("Documento inválido")
-
+    if (isNaN(valorEdad)) {
+        alert("Edad inválida")
         return
     }
 
-    if(numeroDocumento.value.length > 10){
-
-        event.preventDefault()
-
-        alert("Documento demasiado largo")
-
+    if (valorEdad < 18) {
+        alert("No puede ingresar (menor de edad)")
         return
     }
 
-    if(valorEdad < 18){
-
-        event.preventDefault()
-
-        alert("El usuario es menor de edad y no puede enviar el formulario")
-
-        return
-    }
-
-    else if(valorEdad >= 18 && valorEdad <= 25){
-
-        event.preventDefault()
-
+    if (valorEdad >= 18 && valorEdad <= 25) {
         alert("Usuario beneficiario por cotizante")
-
         return
     }
 
-    else if(valorEdad >= 60){
-
-        alert("Se necesita proceso de pensión")
-
+    if (valorSalario <= 0) {
+        alert("Salario inválido")
         return
     }
 
+    if (valorComisiones > valorSalario) {
+        alert("Comisiones no pueden ser mayores al salario")
+        return
+    }
+
+    if (valorHorasExtras > 2000000) {
+        alert("Horas extras demasiado altas")
+        return
+    }
+
+    if (valorDocumento.length < 9 || valorDocumento.length > 10) {
+        alert("Documento inválido")
+        return
+    }
+
+
+    let salarioTotal =
+        valorSalario + valorComisiones + valorHorasExtras
+
+    let ibc = calcularPorcentaje(salarioTotal, porcentajeIBC)
+
+    let salud = calcularPorcentaje(ibc, porcentajeSalud)
+    let pension = calcularPorcentaje(ibc, porcentajePension)
+
+    let fondoSolidaridad = 0
+
+    if (ibc >= 4 * salarioMinimoLegal) {
+        fondoSolidaridad = calcularPorcentaje(ibc, porcentajeFondoSolidaridad)
+    }
+
+    let totalDeducciones =
+        salud + pension + fondoSolidaridad
+
+    let totalRecibir =
+        salarioTotal - totalDeducciones
+
+    console.log("===== RESULTADOS =====")
+    console.log("Nombre:", valorNombre)
+    console.log("Edad:", valorEdad)
+    console.log("Salario total:", salarioTotal)
+    console.log("IBC:", ibc)
+    console.log("Salud:", salud)
+    console.log("Pensión:", pension)
+    console.log("Fondo solidaridad:", fondoSolidaridad)
+    console.log("Total deducciones:", totalDeducciones)
+    console.log("Total a recibir:", totalRecibir)
+
+    alert("Cálculo realizado correctamente ✔")
 })
