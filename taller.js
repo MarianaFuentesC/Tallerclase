@@ -1,7 +1,7 @@
-let nombrecompleto= document.getElementById(nombrecompleto)
-let edad= document.getElementById(edad)
-let tipodedocumento= document.getElementById(tipodedocumento)
-let numerodedocumento= document.getElementById(numerodedocumento)
+let nombrecompleto= document.getElementById("nombrecompleto")
+let edad= document.getElementById("edad")
+let tipodedocumento= document.getElementById("tipodedocumento")
+let numerodedocumento= document.getElementById("numerodedocumento")
 
 if (edad < 18) {
     console.log("No puede ingresar");
@@ -16,10 +16,10 @@ else {
     console.log("Puede entrar");
 }
 
-let salario= document.getElementById(salario)
-let comisiones= document.getElementById(comisiones)
-let totaldehorasextra= document.getElementById(totaldehorasextra)
-let nivelderiesgo= document.getElementById(nivelderiesgo)
+let salario= document.getElementById("salario")
+let comisiones= document.getElementById("comisiones")
+let horasExtras= document.getElementById("horasExtras")
+let nivelderiesgo= document.getElementById("nivelderiesgo")
 
 let valorEdad = parseInt(edad.value)
 let valorSalario = parseFloat(salario.value)
@@ -49,11 +49,11 @@ const porcentajefondosolidaridad= 0.01;
 
 let salarioTotal =(parseFloat(salario.value) || 0) + (parseFloat(comisiones.value) || 0) + (parseFloat(horasExtras.value) || 0)
 let IBC = calcularPorcentaje ( salarioTotal, porcentajeIBC );
-let fondoSolidaridad = calcularPorcentaje ( IBC, porcentFondoSolidaridad );
-let salud = calcularPorcentaje ( IBC, porcentajeSalud);
-let pension = calcularPorcentaje ( IBC, porcentajePension);
+let fondoSolidaridad = calcularPorcentaje ( IBC, porcentfondosolidaridad );
+let salud = calcularPorcentaje ( IBC, porcentajesalud);
+let pension = calcularPorcentaje ( IBC, porcentajepension);
 
-fondoSolidaridad = IBC >= 4 * salarioMinimoLegalV ? fondoSolidaridad : 0;
+fondoSolidaridad = IBC >= 4 * salariominimolegalV ? fondoSolidaridad: 0;
 
 let formulario = document.querySelector("form")
 
